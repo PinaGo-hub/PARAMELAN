@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Mey ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ------------------ ESTILO GENERAL ------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: linear-gradient(120deg, #ff758c, #ff7eb3);
+  overflow: hidden;
+  color: white;
+}
+
+/* ------------------ CORAZONES FLOTANTES ------------------ */
+.heart {
+  position: absolute;
+  bottom: -20px;
+  font-size: 20px;
+  animation: float 10s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) scale(0.8); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+}
+
+/* ------------------ CONTENEDOR PRINCIPAL ------------------ */
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 25px;
+  padding: 40px;
+  max-width: 650px;
+  width: 100%;
+  box-shadow: 0 0 40px rgba(0,0,0,0.3);
+  animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+h1 {
+  font-size: 2.8em;
+  margin-bottom: 15px;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #fff; }
+  to { text-shadow: 0 0 25px #ffd1dc; }
+}
+
+h2 {
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+p {
+  font-size: 1.15em;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+/* ------------------ BOTÓN ------------------ */
+button {
+  background: linear-gradient(45deg, #ff4d6d, #ff85a2);
+  border: none;
+  border-radius: 30px;
+  padding: 14px 35px;
+  font-size: 1em;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(255,255,255,0.8);
+}
+
+/* ------------------ MENSAJE OCULTO ------------------ */
+.hidden-message {
+  display: none;
+  margin-top: 30px;
+  animation: fadeIn 1.5s ease;
+}
+
+.signature {
+  margin-top: 30px;
+  font-style: italic;
+  font-size: 1.1em;
+  opacity: 0.9;
+}
+
+/* ------------------ RESPONSIVE ------------------ */
+@media(max-width: 600px) {
+  h1 { font-size: 2.2em; }
+  p { font-size: 1.05em; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="card">
+    <h1>Feliz Día del Amor y la Amistad ❤️</h1>
+    <h2>Para ti, Mey</h2>
+
+    <p>
+      No sé en qué punto del camino nos convertimos en recuerdo,<br>
+      pero hay personas que no se olvidan…<br>
+      se guardan con cariño.
+    </p>
+
+    <p>
+      Hoy no escribo desde el orgullo ni desde el pasado,<br>
+      escribo desde el amor que fue real,<br>
+      desde lo bonito que existió,<br>
+      y desde el respeto que aún vive.
+    </p>
+
+    <button onclick="mostrarMensaje()">Leer algo más 💌</button>
+
+    <div class="hidden-message" id="mensaje">
+      <p>
+        Gracias por haber sido hogar por un tiempo,<br>
+        por las risas, los enojos, los silencios que decían todo.<br>
+        Aunque la vida haya tomado otros rumbos,<br>
+        lo vivido fue auténtico… y eso nunca se pierde.
+      </p>
+
+      <p>
+        Te deseo un amor que te cuide,<br>
+        una vida que te abrace,<br>
+        y momentos que te hagan sonreír sin razón.
+      </p>
+
+      <div class="signature">
+        Con cariño,<br>
+        alguien que siempre te desea lo mejor 💖
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ------------------ JAVASCRIPT ------------------ -->
+<script>
+/* MENSAJE */
+function mostrarMensaje() {
+  document.getElementById("mensaje").style.display = "block";
+  lanzarCorazones(30);
+}
+
+/* CORAZONES DINÁMICOS */
+function lanzarCorazones(cantidad) {
+  for (let i = 0; i < cantidad; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    heart.style.animationDuration = (Math.random() * 5 + 6) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 10000);
+  }
+}
+
+/* CORAZONES CONSTANTES */
+setInterval(() => {
+  lanzarCorazones(3);
+}, 800);
+</script>
+
+</body>
+</html>
+  
