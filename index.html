@@ -3,122 +3,139 @@
 <head>
 <meta charset="UTF-8">
 <title>Para Mey ❤️</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
 <style>
-/* ------------------ ESTILO GENERAL ------------------ */
+/* ================== BASE MOBILE FIRST ================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  background: linear-gradient(120deg, #ff758c, #ff7eb3);
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ff6a88, #ff99ac);
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont;
+  color: #fff;
   overflow: hidden;
-  color: white;
 }
 
-/* ------------------ CORAZONES FLOTANTES ------------------ */
+/* ================== CORAZONES ================== */
 .heart {
-  position: absolute;
-  bottom: -20px;
-  font-size: 20px;
-  animation: float 10s linear infinite;
-  opacity: 0.7;
+  position: fixed;
+  bottom: -30px;
+  font-size: 18px;
+  animation: floatUp linear forwards;
+  pointer-events: none;
+  opacity: 0.8;
 }
 
-@keyframes float {
-  0% { transform: translateY(0) scale(0.8); opacity: 0; }
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0;
+  }
   10% { opacity: 1; }
-  100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+  100% {
+    transform: translateY(-120vh) scale(1.4);
+    opacity: 0;
+  }
 }
 
-/* ------------------ CONTENEDOR PRINCIPAL ------------------ */
+/* ================== CONTENEDOR ================== */
 .container {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  padding: 20px;
+  padding: 18px;
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(12px);
-  border-radius: 25px;
-  padding: 40px;
-  max-width: 650px;
   width: 100%;
-  box-shadow: 0 0 40px rgba(0,0,0,0.3);
-  animation: fadeIn 2s ease;
+  max-width: 420px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(14px);
+  border-radius: 26px;
+  padding: 26px 22px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  animation: appear 1.5s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
+/* ================== TEXTO ================== */
 h1 {
-  font-size: 2.8em;
-  margin-bottom: 15px;
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-  from { text-shadow: 0 0 10px #fff; }
-  to { text-shadow: 0 0 25px #ffd1dc; }
+  font-size: 2.1rem;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  text-shadow: 0 0 15px rgba(255,255,255,0.6);
 }
 
 h2 {
-  font-weight: 300;
-  margin-bottom: 30px;
-}
-
-p {
-  font-size: 1.15em;
-  line-height: 1.8;
-  margin-bottom: 25px;
-}
-
-/* ------------------ BOTÓN ------------------ */
-button {
-  background: linear-gradient(45deg, #ff4d6d, #ff85a2);
-  border: none;
-  border-radius: 30px;
-  padding: 14px 35px;
-  font-size: 1em;
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 25px rgba(255,255,255,0.8);
-}
-
-/* ------------------ MENSAJE OCULTO ------------------ */
-.hidden-message {
-  display: none;
-  margin-top: 30px;
-  animation: fadeIn 1.5s ease;
-}
-
-.signature {
-  margin-top: 30px;
-  font-style: italic;
-  font-size: 1.1em;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 22px;
   opacity: 0.9;
 }
 
-/* ------------------ RESPONSIVE ------------------ */
-@media(max-width: 600px) {
-  h1 { font-size: 2.2em; }
-  p { font-size: 1.05em; }
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-bottom: 18px;
+  opacity: 0.95;
+}
+
+/* ================== BOTÓN ================== */
+button {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(45deg, #ff3d6b, #ff7fa1);
+  color: #fff;
+  font-weight: 500;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* ================== MENSAJE OCULTO ================== */
+.hidden {
+  display: none;
+  animation: fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.signature {
+  margin-top: 22px;
+  font-style: italic;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+/* ================== PEQUEÑOS AJUSTES ================== */
+@media (max-height: 650px) {
+  .card { padding: 22px 18px; }
 }
 </style>
 </head>
@@ -131,71 +148,62 @@ button:hover {
     <h2>Para ti, Mey</h2>
 
     <p>
-      No sé en qué punto del camino nos convertimos en recuerdo,<br>
-      pero hay personas que no se olvidan…<br>
-      se guardan con cariño.
+      Hay personas que no se olvidan.<br>
+      Se guardan bonito.
     </p>
 
     <p>
-      Hoy no escribo desde el orgullo ni desde el pasado,<br>
-      escribo desde el amor que fue real,<br>
-      desde lo bonito que existió,<br>
-      y desde el respeto que aún vive.
+      Lo nuestro fue real,<br>
+      y lo real no desaparece,<br>
+      solo cambia de forma.
     </p>
 
-    <button onclick="mostrarMensaje()">Leer algo más 💌</button>
+    <button onclick="revelar()">Leer algo más 💌</button>
 
-    <div class="hidden-message" id="mensaje">
+    <div id="mensaje" class="hidden">
       <p>
-        Gracias por haber sido hogar por un tiempo,<br>
-        por las risas, los enojos, los silencios que decían todo.<br>
-        Aunque la vida haya tomado otros rumbos,<br>
-        lo vivido fue auténtico… y eso nunca se pierde.
+        Gracias por los momentos sinceros,<br>
+        por las risas inesperadas,<br>
+        y por haber sido hogar,<br>
+        aunque fuera por un tiempo.
       </p>
 
       <p>
-        Te deseo un amor que te cuide,<br>
-        una vida que te abrace,<br>
-        y momentos que te hagan sonreír sin razón.
+        Hoy te deseo paz,<br>
+        amor del bueno,<br>
+        y una vida que te trate bonito.
       </p>
 
       <div class="signature">
         Con cariño,<br>
-        alguien que siempre te desea lo mejor 💖
+        alguien que siempre te recuerda 💖
       </div>
     </div>
   </div>
 </div>
 
-<!-- ------------------ JAVASCRIPT ------------------ -->
 <script>
-/* MENSAJE */
-function mostrarMensaje() {
-  document.getElementById("mensaje").style.display = "block";
-  lanzarCorazones(30);
+function revelar() {
+  const msg = document.getElementById('mensaje');
+  msg.style.display = 'block';
+  lanzarCorazones(20);
 }
 
-/* CORAZONES DINÁMICOS */
 function lanzarCorazones(cantidad) {
   for (let i = 0; i < cantidad; i++) {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
-    heart.style.animationDuration = (Math.random() * 5 + 6) + "s";
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerHTML = '❤️';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (Math.random() * 14 + 16) + 'px';
+    heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
     document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 10000);
+    setTimeout(() => heart.remove(), 9000);
   }
 }
 
-/* CORAZONES CONSTANTES */
-setInterval(() => {
-  lanzarCorazones(3);
-}, 800);
+setInterval(() => lanzarCorazones(2), 1000);
 </script>
 
 </body>
 </html>
-  
